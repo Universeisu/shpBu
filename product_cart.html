@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart Example</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div class="products">
+            <div class="product">
+                <img src="./เนื้อไก่บด.jpg" alt="flower 1">
+                <div class="product-details">
+                    <h3>ไก่บด - $10</h3>
+                    <p>คำอธิบาย: ไก่บด</p>
+                    <button class="add-to-cart" data-product-id="1" data-price="10"><span style="color: rgb(250, 250, 253);">เพิ่มลงในตะกร้า</span></button>
+                    <button class="remove-from-cart" data-product-id="1">นำออกจากตะกร้า</button>
+                </div>
+            </div>
+            <div class="product2">
+                <img class="img1" src="./หมูบด.jpg " alt="flower 2">
+                <div class="product-details">
+                    <h3>หมูบด - $20</h3>
+                    <p>คำอธิบาย: หมูบด</p>
+                    <button class="add-to-cart" data-product-id="2" data-price="20"><span style="color: rgb(251, 251, 255);">เพิ่มลงในตะกร้า</span></button>
+                    <button class="remove-from-cart" data-product-id="2">นำออกจากตะกร้า</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="./สันนอก.jpg" alt="flower 3">
+                <div class="product-details">
+                    <h3>สันนอก - $30</h3>
+                    <p>คำอธิบาย: สันนอก</p>
+                    <button class="add-to-cart" data-product-id="3" data-price="30"><span style="color: rgb(252, 252, 252);">เพิ่มลงในตะกร้า</span></button>
+                    <button class="remove-from-cart" data-product-id="3">นำออกจากตะกร้า</button>
+                </div>
+            </div>
+            <!-- เพิ่มสินค้าอื่นๆ ต่อจากนี้ -->
+            <div class="product">
+                <img src="./สะโพกไก่.jpg" alt="flower 4">
+                <div class="product-details">
+                    <h3>สะโพกไก่ - $40</h3>
+                    <p>คำอธิบาย: สะโพกไก่</p>
+                    <button class="add-to-cart" data-product-id="4" data-price="40"><span style="color: rgb(217, 217, 221);">เพิ่มลงในตะกร้า</span></button>
+                    <button class="remove-from-cart" data-product-id="4">นำออกจากตะกร้า</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="./เนื้อวัวสะโพก.jpg" alt="flower 5">
+                <div class="product-details">
+                    <h3>เนื้อวัวสะโพก - $50</h3>
+                    <p>คำอธิบาย: เนื้อวัวสะโพก</p>
+                    <button class="add-to-cart" data-product-id="5" data-price="50"><span style="color: rgb(219, 219, 222);">เพิ่มลงในตะกร้า</span></button>
+                    <button class="remove-from-cart" data-product-id="5">นำออกจากตะกร้า</button>
+                </div>
+            </div>
+            <!-- เพิ่มสินค้าอื่นๆ ต่อจากนี้ -->
+            <!-- สินค้าเพิ่มเติม -->
+            <div class="product">
+                <img src="./เนื้อแดงสไลด์.png" alt="flower 6">
+                <div class="product-details">
+                    <h3>เนื้อแดงสไลด์ - $60</h3>
+                    <p>คำอธิบาย: เนื้อแดงสไลด์</p>
+                    <button class="add-to-cart" data-product-id="6" data-price="60"><span style="color: rgb(216, 216, 219);">เพิ่มลงในตะกร้า</span></button>
+                    <button class="remove-from-cart" data-product-id="6">นำออกจากตะกร้า</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="./น่องไก่.jpg" alt="flower 7">
+                <div class="product-details">
+                    <h3>น่องไก่ - $70</h3>
+                    <p>คำอธิบาย: น่องไก่</p>
+                    <button class="add-to-cart" data-product-id="7" data-price="70"><span style="color: rgb(252, 252, 252);">เพิ่มลงในตะกร้า</span></button>
+                    <button class="remove-from-cart" data-product-id="7">นำออกจากตะกร้า</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="./โครงไก่.jpg" alt="flower 8">
+                <div class="product-details">
+                    <h3>โครงไก่ - $80</h3>
+                    <p>คำอธิบาย: โครงไก่</p>
+                    <button class="add-to-cart" data-product-id="8" data-price="80"><span style="color: rgb(244, 244, 245);">เพิ่มลงในตะกร้า</span></button>
+                    <button class="remove-from-cart" data-product-id="8">นำออกจากตะกร้า</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="./ขาหมู.jpg" alt="flower 9">
+                <div class="product-details">
+                    <h3>ขาหมู - $90</h3>
+                    <p>คำอธิบาย: ขาหมู</p>
+                    <button class="add-to-cart" data-product-id="9" data-price="90"><span style="color: rgb(247, 247, 250);">เพิ่มลงในตะกร้า</span></button>
+                    <button class="remove-from-cart" data-product-id="9">นำออกจากตะกร้า</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="./ไก่บด.png" alt="flower 10">
+                <div class="product-details">
+                    <h3>ไก่บด  - $100</h3>
+                    <p>คำอธิบาย: ไก่บด</p>
+                    <button class="add-to-cart" data-product-id="10" data-price="100"><span style="color: rgb(248, 248, 250);">เพิ่มลงในตะกร้า</span></button>
+                    <button class="remove-from-cart" data-product-id="10">นำออกจากตะกร้า</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="cart" class="cart">
+            <h2>ตะกร้า</h2>
+            <div id="cart-items">
+                <p>ไม่มีสินค้าในตะกร้า</p>
+            </div>
+            <p id="total-price">ราคารวม: $0</p>
+        </div>
+
+        <button onclick="printPDF()">Print Receipt</button>
+
+    </div>
+
+    <!-- Load pdf-lib from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
+    <!-- Your JavaScript code -->
+    <script src="cart.js"></script>
+    <script src="pdf-lib.js"></script>
+</body>
+</html>
