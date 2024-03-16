@@ -53,7 +53,7 @@ function updateCartDisplay() {
     productDetails.appendChild(productQuantity);
 
     const productPrice = document.createElement("p");
-    productPrice.textContent = `Price: $${item.price} each`;
+    productPrice.textContent = `Price: ฿${item.price} each`;
     productPrice.classList.add("cart-item-price");
     productDetails.appendChild(productPrice);
 
@@ -70,7 +70,7 @@ function updateCartDisplay() {
     cartElement.innerHTML = "<p>No items in cart.</p>";
   } else {
     const totalPriceElement = document.createElement("p");
-    totalPriceElement.textContent = `Total Price: $${totalPrice}`;
+    totalPriceElement.textContent = `Total Price: ฿${totalPrice}`;
     totalPriceElement.classList.add("cart-total-price");
     cartElement.appendChild(totalPriceElement);
   }

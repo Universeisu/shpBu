@@ -1,74 +1,83 @@
+
 async function printPDF() {
-  const { PDFDocument, rgb } = PDFLib;
+    const { PDFDocument, rgb } = PDFLib;
 
-  // กำหนดขนาดกระดาษใหม่ที่เล็กลง
-  const doc = await PDFDocument.create();
-  const page = doc.addPage();
+    // Create a new PDF document
+    const doc = await PDFDocument.create();
+    const page = doc.addPage();
 
-  const newPageSize = { width: 500, height: 500 }; // กำหนดขนาดกระดาษเล็กลงเป็น mini bill
+    // Set page size
+    page.setSize(600, 800);
 
-  page.setSize(newPageSize.width, newPageSize.height); // ตั้งค่าขนาดกระดาษใหม่
+    // Add content to the page
+    const fontSize = 12;
+    const margin = 50;
+    let y = page.getHeight() - margin;
 
-  const textWidth = 200; // กำหนดความกว้างของข้อความ
-  const textHeight = 50; // กำหนดความสูงของข้อความ
-  const centerX = (page.getWidth() - textWidth) / 2; // คำนวณหาพิกัด x ที่ต้องการให้ข้อความอยู่ตรงกลาง
-  const centerY = (page.getHeight() - textHeight) / 2; // คำนวณหาพิกัด y ที่ต้องการให้ข้อความอยู่ตรงกลาง
-
-  page.drawText("Shopping Receipt", {
-    x: centerX,
-    y: page.getHeight() - 50, // ให้อยู่ข้างบนสุด
-    size: 20, // ปรับขนาดข้อความตามที่ต้องการ
-    color: rgb(0, 0, 0),
-  });
-
-  let yOffset = page.getHeight() - 100;
-  let totalPrice = 0;
-
-  for (const productId in cart) {
-    const item = cart[productId];
-    const itemTotalPrice = item.quantity * item.price;
-    totalPrice += itemTotalPrice;
-
-    page.drawText(
-      `Product ${productId}: ${item.quantity} x $${item.price} = $${itemTotalPrice}`,
-      {
-        x: 50,
-        y: yOffset,
-        size: 12, // ปรับขนาดข้อความให้เล็กลง
+    // Title
+    page.drawText("Shopping Receipt", {
+        x: margin,
+        y,
+        size: 20,
         color: rgb(0, 0, 0),
-      }
-    );
+    });
+    y -= fontSize * 2;
 
-    yOffset -= 20; // ปรับระยะห่างของข้อความให้เล็กลง
-  }
+    // Items in the cart
+    let totalPrice = 0;
+    for (const productId in cart) {
+        const item = cart[productId];
+        const itemTotalPrice = item.quantity * item.price;
+        totalPrice += itemTotalPrice;
 
-  const name = "Fahsai";
-  const phoneNumber = "654259029";
-  page.drawText(`Name: ${name}`, {
-    x: 50,
-    y: yOffset - 40,
-    size: 12, // ปรับขนาดข้อความให้เล็กลง
-    color: rgb(0, 0, 0),
-  });
+        page.drawText(
+            `: ${productId}, Quantity: ${item.quantity}, Price: ฿ ${item.price}, Total: ฿ ${itemTotalPrice}`,
+            {
+                x: margin,
+                y,
+                size: fontSize,
+                color: rgb(0, 0, 0),
+            }
+        );
+        y -= fontSize;
+    }
 
-  page.drawText(`Phone Number: ${phoneNumber}`, {
-    x: 50,
-    y: yOffset - 60, // ปรับตำแหน่งข้อความให้เล็กลง
-    size: 12, // ปรับขนาดข้อความให้เล็กลง
-    color: rgb(0, 0, 0),
-  });
+    // Total price
+    page.drawText(`Total Price: ฿ ${totalPrice}`, {
+        x: margin,
+        y,
+        size: fontSize,
+        color: rgb(0, 0, 0),
+    });
+    y -= fontSize * 2;
 
-  page.drawText(`Total Price: $${totalPrice}`, {
-    x: 50,
-    y: yOffset - 80, // ปรับตำแหน่งข้อความให้เล็กลง
-    size: 12, // ปรับขนาดข้อความให้เล็กลง
-    color: rgb(0, 0, 0),
-  });
+    // Additional details (e.g., customer name and phone number)
+    const name = "Fahsai";
+    const phoneNumber = "654259029";
+    page.drawText(`Name: ${name}`, {
+        x: margin,
+        y,
+        size: fontSize,
+        color: rgb(0, 0, 0),
+    });
+    y -= fontSize;
+    page.drawText(`Phone Number: ${phoneNumber}`, {
+        x: margin,
+        y,
+        size: fontSize,
+        color: rgb(0, 0, 0),
+    });
 
-  const pdfBytes = await doc.save();
-  const blob = new Blob([pdfBytes], { type: "application/pdf" });
-  const link = document.createElement("a");
-  link.href = window.URL.createObjectURL(blob);
-  link.download = "shopping_receipt.pdf";
-  link.click();
+    // Save the document
+    const pdfBytes = await doc.save();
+
+    // Create a blob from the PDF data
+    const blob = new Blob([pdfBytes], { type: "application/pdf" });
+
+    // Create a download link and trigger the download
+    const link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "shopping_receipt.pdf";
+    link.click();
 }
+
